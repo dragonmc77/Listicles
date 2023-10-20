@@ -70,6 +70,7 @@ namespace Listicles
             }
             ViewModel.CurrentListicle = ViewModel.Listicles.First(x => x == ((Expander)sender).DataContext);
             ViewModel.CurrentListicle.SelectedListicleHighlight = new FontFamily("Segoe UI Semibold");
+            if (ViewModel.CurrentListicle.SelectedGameIndex < 0) { ViewModel.CurrentListicle.SelectedGameIndex = 1; }
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
