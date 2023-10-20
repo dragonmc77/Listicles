@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Listicles.AddToListicle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Listicles"
+             mc:Ignorable="d" Width="384">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Margin="5,0,0,0">Create a new listicle or pick an existing one from the list.</Label>
+        <RadioButton x:Name="rdoNew" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="5,0,0,0"/>
+        <Label Content="Title" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="txtNewListicleTitle" Margin="3" Grid.Row="1" Grid.Column="2" TextChanged="txtNewListicleTitle_TextChanged" />
+        <Label Content="Link" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="txtNewListicleLink" Margin="3" Grid.Row="2" Grid.Column="2" TextChanged="txtNewListicleLink_TextChanged"/>
+        <Separator Grid.Row="3" Margin="3" Grid.ColumnSpan="3"/>
+        <RadioButton x:Name="rdoExisting" Grid.Row="4" Grid.Column="0" Margin="5,0,0,0" />
+        <ComboBox Name="cmbListicles" ItemsSource="{Binding Listicles}" DisplayMemberPath="Title" SelectedValuePath="Id" SelectionChanged="cmbListicles_SelectionChanged" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="3"/>
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnOK" Content="OK" Margin="5" Padding="3" IsDefault="True" Grid.Column="2" Click="btnOK_Click" />
+            <Button Content="Cancel" Margin="5" Padding="3" IsCancel="True" Grid.Column="3"/>
+        </Grid>
+    </Grid>
+</UserControl>

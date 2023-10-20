@@ -1,0 +1,2 @@
+# Listicles
+ Listicles Playnite extension

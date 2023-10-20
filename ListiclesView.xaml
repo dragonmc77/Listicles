@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="Listicles.ListiclesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Listicles" d:DataContext="{d:DesignInstance Type=local:ListiclesViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!-- icons from here: https://www.flaticon.com/search?author_id=3874&style_id=1376&type=standard&word=-->
+    <UserControl.Resources>
+        <Style x:Key="noListiclesMessage" TargetType="ListViewItem">
+            <!-- Show a message if there are no Listicles -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Listicles.Count}" Value="0">
+                    <Setter Property="Content" Value="You have no Listicles! Right-click a game in your Libarary and select 'Add to Listicle'" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="noHeader" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <Style x:Key="NoHighlight" TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Focusable" Value="False" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ToolbarIcons" TargetType="Image">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+        </Style>
+        <Image x:Key="SaveIcon" Source="icon_save.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="AddStubIcon" Source="icon_addstub.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="OpenLinkIcon" Source="icon_openlink.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveUpIcon" Source="icon_moveup.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveDownIcon" Source="icon_movedown.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveTopIcon" Source="icon_movetotop.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveBottomIcon" Source="icon_movetobottom.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="ReverseIcon" Source="icon_reverse.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="DeleteIcon" Source="icon_delete.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="DeleteListicleIcon" Source="icon_deletelisticle.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveListicleUpIcon" Source="icon_movelisticleup.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="MoveListicleDownIcon" Source="icon_movelisticledown.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="ShowGameIcon" Source="icon_showgame.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="EditIcon" Source="icon_edit.png" Style="{StaticResource ToolbarIcons}" />
+        <Image x:Key="StubIcon" Source="icon_stub.png" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="grdGameToolbar" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAddStub" Content="{StaticResource AddStubIcon}" Margin="0,0,0,0" ToolTip="Add Stub" Click="btnAddStub_Click" Grid.Column="0" />
+            <Button x:Name="btnMoveUp" Content="{StaticResource MoveUpIcon}" Margin="0,0,0,0" Click="btnMoveUp_Click" ToolTip="Move Up" Grid.Column="1" />
+            <Button x:Name="btnMoveDown" Content="{StaticResource MoveDownIcon}" Margin="0,0,0,0" Click="btnMoveDown_Click" ToolTip="Move Down" Grid.Column="2" />
+            <Button x:Name="btnMoveTop" Content="{StaticResource MoveTopIcon}" Margin="0,0,0,0" Click="btnMoveTop_Click" ToolTip="Move To Top" Grid.Column="3" />
+            <Button x:Name="btnMoveBottom" Content="{StaticResource MoveBottomIcon}" Margin="0,0,0,0" Click="btnMoveBottom_Click" ToolTip="Move To Bottom" Grid.Column="4" />
+            <Button x:Name="btnReverse" Content="{StaticResource ReverseIcon}" Margin="0,0,0,0" ToolTip="Reverse Game Order" Click="btnReverse_Click" Grid.Column="5"/>
+            <Button x:Name="btnDelete" Content="{StaticResource DeleteIcon}" Margin="0,0,0,0" Click="btnDelete_Click" ToolTip="Remove Game" Grid.Column="6" />
+            <Button x:Name="btnShowGame" Content="{StaticResource ShowGameIcon}" Margin="0,0,0,0" ToolTip="Show Game In Library" Click="btnShowGame_Click" Grid.Column="7" />
+        </Grid>
+        <Grid x:Name="grdListicleToolbar" Grid.Row="1" HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnSave" Content="{StaticResource SaveIcon}"  ToolTip="Save" Grid.Column="0" Click="btnSave_Click" />
+            <Button x:Name="btnEdit" Content="{StaticResource EditIcon}" ToolTip="Edit Listicle" Grid.Column="1" Click="btnEdit_Click" />
+            <Button x:Name="btnMoveListicleUp" Content="{StaticResource MoveListicleUpIcon}" ToolTip="Move Listicle Up" Grid.Column="2" Click="btnMoveListicleUp_Click" />
+            <Button x:Name="btnMoveListicleDown" Content="{StaticResource MoveListicleDownIcon}" ToolTip="Move Listicle Down" Grid.Column="3" Click="btnMoveListicleDown_Click" />
+            <Button x:Name="btnOpenLink" Content="{StaticResource OpenLinkIcon}"  ToolTip="Open Link" Grid.Column="4" Click="btnOpenLink_Click" />
+            <Button x:Name="btnDeleteListicle" Content="{StaticResource DeleteListicleIcon}" ToolTip="Remove Listicle" Grid.Column="5" Click="btnDeleteListicle_Click" />
+        </Grid>
+        <!--<WrapPanel x:Name="wpToolbar" Grid.Row="1" VerticalAlignment="Top" Height="32">
+            <Button x:Name="btnSave" Content="{StaticResource SaveIcon}" Margin="5,0,0,0" Click="btnSave_Click" ToolTip="Save"/>
+            <Button x:Name="btnAddStub" Content="{StaticResource AddStubIcon}" Margin="5,0,0,0" ToolTip="Add Stub" Click="btnAddStub_Click" />
+            <Button x:Name="btnOpenLink" Content="{StaticResource OpenLinkIcon}" Margin="5,0,0,0" Click="btnOpenLink_Click" />
+            <Button x:Name="btnMoveUp" Content="{StaticResource MoveUpIcon}" Margin="5,0,0,0" Click="btnMoveUp_Click" />
+            <Button x:Name="btnMoveDown" Content="{StaticResource MoveDownIcon}" Margin="5,0,0,0" Click="btnMoveDown_Click" />
+            <Button x:Name="btnMoveTop" Content="{StaticResource MoveTopIcon}" Margin="5,0,0,0" Click="btnMoveTop_Click" />
+            <Button x:Name="btnMoveBottom" Content="{StaticResource MoveBottomIcon}" Margin="5,0,0,0" Click="btnMoveBottom_Click" />
+            <Button x:Name="btnReverse" Content="{StaticResource ReverseIcon}" Margin="5,0,0,0" />
+            <Button x:Name="btnDelete" Content="{StaticResource DeleteIcon}" Margin="5,0,0,0" Click="btnDelete_Click" ToolTip="Remove Game" />
+            <Button x:Name="btnDeleteListicle" Content="{StaticResource DeleteListicleIcon}" Margin="5,0,0,0" ToolTip="Remove Listicle" Click="btnDeleteListicle_Click" />
+            <Button x:Name="btnShowGame" Content="{StaticResource ShowGameIcon}" Margin="5,0,0,0" ToolTip="Show Game In Library" Click="btnShowGame_Click" />
+        </WrapPanel>-->
+        <!--<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible">-->
+        <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Listicles" x:Name="gvcMain" Width="{Binding ElementName=gridViewHelper, Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Expander Header="{Binding Title}" Width="{Binding ElementName=expanderHelper, Path=ActualWidth}" FontFamily="{Binding SelectedListicleHighlight}"  Expanded="Expander_Expanded">
+                                    <!--<Expander.Style>
+                                        <Style TargetType="Expander">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{}">
+                                                    <Setter Property="FontWeight" Value="Bold" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Expander.Style>-->
+                                    <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged">
+                                        <ListView.View>
+                                            <GridView ColumnHeaderContainerStyle="{StaticResource noHeader}">
+                                                <GridViewColumn>
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image RenderOptions.BitmapScalingMode="Fant" Height="28" Width="28" Margin="0,0,8,0" Source="{Binding Icon, Mode=OneWay, Converter={StaticResource ImageStringToImageConverterCached}, FallbackValue={StaticResource DefaultGameIcon}}">
+                                                                    <Image.Style>
+                                                                        <Style TargetType="Image">
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
+                                                                                    <Setter Property="Source" Value="icon_stub.png"/>
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </Image.Style>
+                                                                </Image>
+                                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center">
+                                                                    <TextBlock.Style>
+                                                                        <Style TargetType="TextBlock">
+                                                                            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
+                                                                                    <Setter Property="FontFamily" Value="Segoe UI"/>
+                                                                                    <Setter Property="FontStyle" Value="Italic"/>
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </TextBlock.Style>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Expander>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel Height="32">
+                            <TextBlock x:Name="tbTitle" Text="{Binding Title}" Foreground="White" Height="32"/>
+                            <TextBlock x:Name="tbLink" Text="{Binding Link}" Foreground="White"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+        </ListView>
+        
+        <!--</ScrollViewer>-->
+        <!--<ListBox Grid.Row="1" DataContext="{Binding Listicles}" ItemsSource="{Binding Title}"/>-->
+        <!--<TextBlock DataContext="{Binding Listicles}" Text="{Binding Title}" Grid.Row="3" Foreground="White"/>-->
+        <!--This is the hidden helper Grid which does the resizing -->
+        <Grid Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!--Width is set to "Fill"-->
+                <ColumnDefinition Width="*"/>
+                <!--Correction Width-->
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="24"/>
+            </Grid.ColumnDefinitions>
+            <!--This is the hidden helper Field which is used to bind to, using the "Fill" column of the helper grid-->
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="gridViewHelper"/>
+            <Grid Grid.Row="1" Grid.Column="0" x:Name="expanderHelper"/>
+        </Grid>
+    </Grid>
+</UserControl>
