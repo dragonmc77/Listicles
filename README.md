@@ -20,6 +20,8 @@ If a game is not in your library, you can add a "stub", which is just a placehol
 
 Notes:
 
+In the top toolbar of the plugin, the icons on the left are all related to individual games in a Listicle, while the icons on the right are all related to Listicles themselves.
+
 My reason for creating this is to have an easy way to create "Top 10" and "Top 25" games lists from Youtube, and some gaming websites. I can add the games they cover to a Listicle as I watch the video or read the article. Later on, I am then able to open that video or article by clicking the Open Link button in the plugin toolbar in Playnite.
 
 This can also be used to maintain a set of playlists for your games.
