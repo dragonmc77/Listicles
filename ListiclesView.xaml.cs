@@ -1,5 +1,6 @@
 ﻿using Playnite.SDK;
 using Playnite.SDK.Models;
+using Playnite.SDK.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,13 @@ namespace Listicles
             }
             
             /* when a game is removed, this event fires. we want to handle that by keeping the same index selected */
-            if (((ListView)sender).SelectedIndex < 0)
-            {
-                ((ListView)sender).SelectedIndex = selectedGameIndex;
-            }
+            //if (((ListView)sender).SelectedIndex < 0)
+            //{
+            //    ((ListView)sender).SelectedIndex = selectedGameIndex;
+            //}
             /* save the currently selected game as the CurrentGame */
             ViewModel.CurrentGame = (Playnite.SDK.Models.Game)((ListView)sender).SelectedItem;
-            selectedGameIndex = ((ListView)sender).SelectedIndex;
+            //selectedGameIndex = ((ListView)sender).SelectedIndex;
             //Expander parent = (Expander)((ListView)sender).Parent;
             //parent.FontWeight = FontWeights.Bold;
         }
@@ -82,7 +83,14 @@ namespace Listicles
             {
                 if (ViewModel.CurrentListicle.Link != String.Empty)
                 {
-                    System.Diagnostics.Process.Start(ViewModel.CurrentListicle.Link);
+                    try
+                    {
+                        System.Diagnostics.Process.Start(ViewModel.CurrentListicle.Link);
+                    }
+                    catch (Exception ex) 
+                    { 
+                        
+                    }
                 }
             }
         }
@@ -102,7 +110,7 @@ namespace Listicles
             if (ViewModel.CurrentListicle != null)
             {
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
-                if (index < ViewModel.CurrentListicle.Games.Count - 1)
+                if (index < ViewModel.CurrentListicle.Games.Count - 1 & index >= 0)
                 {
                     ViewModel.CurrentListicle.Games.Move(index, index + 1);
                 }
@@ -124,7 +132,7 @@ namespace Listicles
             if (ViewModel.CurrentListicle != null)
             {
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
-                if (index < ViewModel.CurrentListicle.Games.Count - 1)
+                if (index < ViewModel.CurrentListicle.Games.Count - 1 & index >= 0)
                 {
                     ViewModel.CurrentListicle.Games.Move(index, ViewModel.CurrentListicle.Games.Count - 1);
                 }
@@ -152,12 +160,15 @@ namespace Listicles
         }
         private void btnAddStub_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.CurrentGame != null)
+            if (ViewModel.CurrentListicle != null)
             {
-                Playnite.SDK.Models.Game game = ViewModel.AddStub();
-                if (game != null)
+                if (ViewModel.CurrentListicle.SelectedGameIndex >= 0)
                 {
-                    // don't know how to select a game from the current ListView
+                    Playnite.SDK.Models.Game game = ViewModel.AddStub();
+                    if (game != null)
+                    {
+                        // don't know how to select a game from the current ListView
+                    }
                 }
             }
         }
