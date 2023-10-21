@@ -116,90 +116,89 @@
             <Button x:Name="btnShowGame" Content="{StaticResource ShowGameIcon}" Margin="5,0,0,0" ToolTip="Show Game In Library" Click="btnShowGame_Click" />
         </WrapPanel>-->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible">
-        <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
-                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Listicles" x:Name="gvcMain" Width="{Binding ElementName=gridViewHelper, Path=ActualWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Expander Header="{Binding Title}" Width="{Binding ElementName=expanderHelper, Path=ActualWidth}" FontFamily="{Binding SelectedListicleHighlight}"  Expanded="Expander_Expanded">
-                                    <!--<Expander.Style>
-                                        <Style TargetType="Expander">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{}">
-                                                    <Setter Property="FontWeight" Value="Bold" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Expander.Style>-->
-                                    <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged">
-                                        <ListView.View>
-                                            <GridView ColumnHeaderContainerStyle="{StaticResource noHeader}">
-                                                <GridViewColumn>
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <Image RenderOptions.BitmapScalingMode="Fant" Height="28" Width="28" Margin="0,0,8,0" Source="{Binding Icon, Mode=OneWay, Converter={StaticResource ImageStringToImageConverterCached}, FallbackValue={StaticResource DefaultGameIcon}}">
-                                                                    <Image.Style>
-                                                                        <Style TargetType="Image">
-                                                                            <Style.Triggers>
-                                                                                <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
-                                                                                    <Setter Property="Source" Value="icon_stub.png"/>
-                                                                                </DataTrigger>
-                                                                            </Style.Triggers>
-                                                                        </Style>
-                                                                    </Image.Style>
-                                                                </Image>
-                                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center">
-                                                                    <TextBlock.Style>
-                                                                        <Style TargetType="TextBlock">
-                                                                            <Setter Property="FontFamily" Value="Segoe UI Light"/>
-                                                                            <Style.Triggers>
-                                                                                <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
-                                                                                    <Setter Property="FontFamily" Value="Segoe UI"/>
-                                                                                    <Setter Property="FontStyle" Value="Italic"/>
-                                                                                </DataTrigger>
-                                                                            </Style.Triggers>
-                                                                        </Style>
-                                                                    </TextBlock.Style>
-                                                                </TextBlock>
-                                                            </StackPanel>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-                                </Expander>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-            <!--<ListView.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel Height="32">
-                            <TextBlock x:Name="tbTitle" Text="{Binding Title}" Foreground="White" Height="32"/>
-                            <TextBlock x:Name="tbLink" Text="{Binding Link}" Foreground="White"/>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>-->
-        </ListView>
-        
+            <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Listicles" x:Name="gvcMain" Width="{Binding ElementName=gridViewHelper, Path=ActualWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Expander Header="{Binding Title}" Width="{Binding ElementName=expanderHelper, Path=ActualWidth}" FontFamily="{Binding SelectedListicleHighlight}"  Expanded="Expander_Expanded">
+                                        <!--<Expander.Style>
+                                            <Style TargetType="Expander">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{}">
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Expander.Style>-->
+                                        <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged">
+                                            <ListView.View>
+                                                <GridView ColumnHeaderContainerStyle="{StaticResource noHeader}">
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <Image RenderOptions.BitmapScalingMode="Fant" Height="28" Width="28" Margin="0,0,8,0" Source="{Binding Icon, Mode=OneWay, Converter={StaticResource ImageStringToImageConverterCached}, FallbackValue={StaticResource DefaultGameIcon}}">
+                                                                        <Image.Style>
+                                                                            <Style TargetType="Image">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
+                                                                                        <Setter Property="Source" Value="icon_stub.png"/>
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Image.Style>
+                                                                    </Image>
+                                                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Setter Property="FontFamily" Value="Segoe UI Light"/>
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Notes}" Value="Stub{00000000-0000-0000-0000-000000000000}">
+                                                                                        <Setter Property="FontFamily" Value="Segoe UI"/>
+                                                                                        <Setter Property="FontStyle" Value="Italic"/>
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </Expander>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel Height="32">
+                                <TextBlock x:Name="tbTitle" Text="{Binding Title}" Foreground="White" Height="32"/>
+                                <TextBlock x:Name="tbLink" Text="{Binding Link}" Foreground="White"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+            </ListView>
         </ScrollViewer>
         <!--<ListBox Grid.Row="1" DataContext="{Binding Listicles}" ItemsSource="{Binding Title}"/>-->
         <!--<TextBlock DataContext="{Binding Listicles}" Text="{Binding Title}" Grid.Row="3" Foreground="White"/>-->
