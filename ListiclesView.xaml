@@ -116,7 +116,7 @@
             <Button x:Name="btnShowGame" Content="{StaticResource ShowGameIcon}" Margin="5,0,0,0" ToolTip="Show Game In Library" Click="btnShowGame_Click" />
         </WrapPanel>-->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible">
-            <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0">
+            <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0" PreviewMouseWheel="lvListicles_PreviewMouseWheel">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Background" Value="Transparent" />

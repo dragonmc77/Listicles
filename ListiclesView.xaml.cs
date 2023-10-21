@@ -236,5 +236,20 @@ namespace Listicles
                 }
             }
         }
+
+        private void lvListicles_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            /*  this little bit of copy/pasted code passed scrolling up to the scrollviewer
+                to make it easier to scroll vertically */
+            if (!e.Handled)
+            {
+                e.Handled = true;
+                var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
+                eventArg.RoutedEvent = UIElement.MouseWheelEvent;
+                eventArg.Source = sender;
+                var parent = ((Control)sender).Parent as UIElement;
+                parent.RaiseEvent(eventArg);
+            }
+        }
     }
 }
