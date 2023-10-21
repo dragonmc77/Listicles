@@ -115,7 +115,7 @@
             <Button x:Name="btnDeleteListicle" Content="{StaticResource DeleteListicleIcon}" Margin="5,0,0,0" ToolTip="Remove Listicle" Click="btnDeleteListicle_Click" />
             <Button x:Name="btnShowGame" Content="{StaticResource ShowGameIcon}" Margin="5,0,0,0" ToolTip="Show Game In Library" Click="btnShowGame_Click" />
         </WrapPanel>-->
-        <!--<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible">-->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible">
         <ListView x:Name="lvListicles" ItemsSource="{Binding Listicles}" SelectedItem="{Binding CurrentListicle}" SelectionMode="Single" Grid.Row="2" Margin="0,5,0,0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
@@ -200,7 +200,7 @@
                 </ListView.ItemTemplate>-->
         </ListView>
         
-        <!--</ScrollViewer>-->
+        </ScrollViewer>
         <!--<ListBox Grid.Row="1" DataContext="{Binding Listicles}" ItemsSource="{Binding Title}"/>-->
         <!--<TextBlock DataContext="{Binding Listicles}" Text="{Binding Title}" Grid.Row="3" Foreground="White"/>-->
         <!--This is the hidden helper Grid which does the resizing -->
