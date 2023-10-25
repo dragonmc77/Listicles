@@ -13,11 +13,13 @@ namespace Listicles
         private string option1 = string.Empty;
         private bool numberedGameLists = false;
         private bool confirmListicleDelete = false;
+        private bool showSaveConfirmation = false;
         private bool optionThatWontBeSaved = false;
 
         public string Option1 { get => option1; set => SetValue(ref option1, value); }
         public bool NumberedGameLists { get => numberedGameLists; set => SetValue(ref numberedGameLists, value); }
         public bool ConfirmListicleDelete { get => confirmListicleDelete; set => SetValue(ref confirmListicleDelete, value); }
+        public bool ShowSaveConfirmation { get => showSaveConfirmation; set => SetValue(ref showSaveConfirmation, value); }
         // Playnite serializes settings object to a JSON object and saves it as text file.
         // If you want to exclude some property from being saved then use `JsonDontSerialize` ignore attribute.
         [DontSerialize]

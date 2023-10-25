@@ -6,9 +6,34 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
     <StackPanel>
-        <CheckBox IsChecked="{Binding Settings.ConfirmListicleDelete}" Content="Show confirmation when deleting Listicles" Margin="8,8,0,0"/>
+        <CheckBox IsChecked="{Binding Settings.ConfirmListicleDelete}" Content="Prompt for confirmation when deleting Listicles" Margin="8,8,0,0"/>
         <TextBlock Text="Description for Option1:" Visibility="Collapsed"/>
         <TextBox Text="{Binding Settings.Option1}" Visibility="Collapsed"/>
+        <CheckBox IsChecked="{Binding Settings.ShowSaveConfirmation}" Content="Show confirmation after saving" Margin="8,8,0,0"/>
         <CheckBox IsChecked="{Binding Settings.NumberedGameLists}" Content="Numbered game lists (not working yet)" Margin="8,8,0,0"/>
+        <TextBlock Text="On startup, copy Listicles data file from this location:" Margin="8,8,0,0" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="64" />
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Settings.CopyToFolder}" Margin="8,0,0,0" Grid.Column="0"/>
+            <Button Content=". . ." Grid.Column="1" Margin="8,8,8,0" />
+        </Grid>
+        <TextBlock Text="On exit, copy Listicles data file to this location:" Margin="8,8,0,0" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="64" />
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Settings.CopyToFolder}" Margin="8,0,0,0" Grid.Column="0"/>
+            <Button Content=". . ." Grid.Column="1" Margin="8,8,8,0" />
+        </Grid>
     </StackPanel>
 </UserControl>

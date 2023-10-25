@@ -75,7 +75,17 @@ namespace Listicles
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.UpdateListiclesData();
+            try
+            {
+                ViewModel.UpdateListiclesData();
+                if (ViewModel.Plugin.Settings.ShowSaveConfirmation)
+                {
+                    ViewModel.Plugin.PlayniteApi.Dialogs.ShowMessage("Save successful","Listicles");
+                }
+            } catch ( Exception ex )
+            {
+                ViewModel.Plugin.PlayniteApi.Dialogs.ShowErrorMessage("Error saving Listicles data","Listicles");
+            }
         }
         private void btnOpenLink_Click(object sender, RoutedEventArgs e)
         {

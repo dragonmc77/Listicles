@@ -52,17 +52,6 @@
         <game id="5339bcea-b3b4-4bdb-a889-31d3fa388544" index="13" />
       </games>
     </listicle>
-    <listicle id="0dce790b-8fd6-44cf-b21b-6565525eb005" index="4">
-      <title>Five Games You Shouldn't 100% - Mortismal Gaming</title>
-      <link>https://www.youtube.com/watch?v=L66Uj59dV9w</link>
-      <games>
-        <game id="5866e565-79dd-4a0d-bd27-34fb3122d1b5" index="0" />
-        <game id="624606ec-53ea-4b19-9be8-3069d140234c" index="1" />
-        <game id="08b06ba5-dfde-4a04-8b73-3068f7599ff4" index="2" />
-        <game id="a7329a01-4b41-4362-ac67-47743cfcac3e" index="3" />
-        <game id="564fdc03-d05d-458a-ba07-ab0dc121eced" index="4" />
-      </games>
-    </listicle>
     <listicle id="65e998d3-88d6-4cff-a241-5d08ce148c89" index="3">
       <title>Top 10 SNES Action JRPGs I'm Hyped to Play! - SuperDerek RPGs</title>
       <link>https://odysee.com/@SuperDerekRPGs:d/top-10-snes-action-jrpgs-i'm-hyped-to:3</link>
@@ -78,6 +67,17 @@
         <game id="d79758d8-7b63-4d4b-bda1-2e3a034d2b6e" index="8" />
         <game id="01a7e3e1-9d42-486c-b8e6-f3bedb187c66" index="9" />
         <game id="40f8dcfa-3aad-4537-bfae-161741b66002" index="10" />
+      </games>
+    </listicle>
+    <listicle id="0dce790b-8fd6-44cf-b21b-6565525eb005" index="4">
+      <title>Five Games You Shouldn't 100% - Mortismal Gaming</title>
+      <link>https://www.youtube.com/watch?v=L66Uj59dV9w</link>
+      <games>
+        <game id="5866e565-79dd-4a0d-bd27-34fb3122d1b5" index="0" />
+        <game id="624606ec-53ea-4b19-9be8-3069d140234c" index="1" />
+        <game id="08b06ba5-dfde-4a04-8b73-3068f7599ff4" index="2" />
+        <game id="a7329a01-4b41-4362-ac67-47743cfcac3e" index="3" />
+        <game id="564fdc03-d05d-458a-ba07-ab0dc121eced" index="4" />
       </games>
     </listicle>
     <listicle id="36668af9-6541-4d23-942c-480d75923989" index="5">
