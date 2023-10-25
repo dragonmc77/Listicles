@@ -6,9 +6,9 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
     <StackPanel>
-        <TextBlock Text="Description for Option1:"/>
-        <TextBox Text="{Binding Settings.Option1}"/>
-        <TextBlock Text="Numbered game lists:"/>
-        <CheckBox IsChecked="{Binding Settings.NumberedGameLists}" Content="Numbered game lists"/>
+        <CheckBox IsChecked="{Binding Settings.ConfirmListicleDelete}" Content="Show confirmation when deleting Listicles" Margin="8,8,0,0"/>
+        <TextBlock Text="Description for Option1:" Visibility="Collapsed"/>
+        <TextBox Text="{Binding Settings.Option1}" Visibility="Collapsed"/>
+        <CheckBox IsChecked="{Binding Settings.NumberedGameLists}" Content="Numbered game lists (not working yet)" Margin="8,8,0,0"/>
     </StackPanel>
 </UserControl>

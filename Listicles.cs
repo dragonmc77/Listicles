@@ -178,7 +178,7 @@ namespace Listicles
                      * each listicle, we can't just bring in the games directly from the xml because they
                      * will not necessarily be in the correct order. we need to bring in the games in the
                      * order specified by the index xml attribute of each game, so the interim
-                     * step will be to store the gameid's in a SortedDictionary hashtable which autoamtically
+                     * step will be to store the gameid's in a SortedDictionary hashtable which automatically
                      * sorts them by key (index), then interate through that. */
                     SortedDictionary<int, string> gameIds = new SortedDictionary<int, string>();
                     foreach (XmlElement xmlGame in xmlListicle.GetElementsByTagName("game"))
@@ -404,6 +404,7 @@ namespace Listicles
         public RelayCommand<Game> ShowGameInLibrary { get; }
 
         public bool ShowNumbers;
+        public bool ConfirmListicleDelete;
 
         public void UpdateListiclesData()
         {
@@ -423,7 +424,6 @@ namespace Listicles
             // Injecting your plugin instance is required for Save/Load method because Playnite saves data to a location based on what plugin requested the operation.
             this.plugin = plugin;
             var settings = plugin.GetSettings(false);
-            ShowNumbers = plugin.Settings.NumberedGameLists;
             
             // Load saved data
             //var listiclesData = plugin.LoadListiclesData().OrderBy(x => x.Index);
@@ -447,6 +447,11 @@ namespace Listicles
                 plugin.PlayniteApi.MainView.SelectGame(game.Id);
                 plugin.PlayniteApi.MainView.SwitchToLibraryView();
             });
+        }
+
+        public Listicles Plugin
+        {
+            get { return plugin; }
         }
 
         public Game AddStub()

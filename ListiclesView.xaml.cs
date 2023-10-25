@@ -88,8 +88,8 @@ namespace Listicles
                         System.Diagnostics.Process.Start(ViewModel.CurrentListicle.Link);
                     }
                     catch (Exception ex) 
-                    { 
-                        
+                    {
+                        Playnite.SDK.API.Instance.Dialogs.ShowErrorMessage("Error opening link. Make sure it is properly formatted.");
                     }
                 }
             }
@@ -154,8 +154,20 @@ namespace Listicles
         {
             if (ViewModel.CurrentListicle != null)
             {
-                ViewModel.Listicles.Remove(ViewModel.CurrentListicle);
-                ViewModel.CurrentListicle = null;
+                MessageBoxResult okToDelete = MessageBoxResult.Yes;
+                if (ViewModel.Plugin.Settings.ConfirmListicleDelete)
+                {
+                    okToDelete = Playnite.SDK.API.Instance.Dialogs.ShowMessage(
+                        "Are you sure you would like to delete this Listicle?", 
+                        "Delete Listicle", 
+                        MessageBoxButton.YesNo
+                    );
+                }
+                if (okToDelete == MessageBoxResult.Yes)
+                {
+                    ViewModel.Listicles.Remove(ViewModel.CurrentListicle);
+                    ViewModel.CurrentListicle = null;
+                }
             }
         }
         private void btnAddStub_Click(object sender, RoutedEventArgs e)

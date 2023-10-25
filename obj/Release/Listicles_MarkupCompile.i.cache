@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\mcayon\Nextcloud\playnite\extensions\Listicles\obj\Debug\
+C:\Users\mcayon\Nextcloud\playnite\extensions\Listicles\obj\Release\
 Listicles
 none
 false
-DEBUG;TRACE
+TRACE
 
 5669237886
 1-1349735983
-8-630923090
+8-1510454182
 14865324344
 AddToListicle.xaml;App.xaml;EditListicle.xaml;ListiclesSettingsView.xaml;ListiclesView.xaml;
 
-False
+True
 
