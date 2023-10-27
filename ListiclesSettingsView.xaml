@@ -9,7 +9,8 @@
         <CheckBox IsChecked="{Binding Settings.ConfirmListicleDelete}" Content="Prompt for confirmation when deleting Listicles" Margin="8,8,0,0"/>
         <TextBlock Text="Description for Option1:" Visibility="Collapsed"/>
         <TextBox Text="{Binding Settings.Option1}" Visibility="Collapsed"/>
-        <CheckBox IsChecked="{Binding Settings.ShowSaveConfirmation}" Content="Show confirmation after saving" Margin="8,8,0,0"/>
+        <CheckBox IsChecked="{Binding Settings.ShowSaveConfirmation}" Content="Show confirmation after manually saving" Margin="8,8,0,0"/>
+        <CheckBox IsChecked="{Binding Settings.SaveOnExit}" Content="Automatically save when Playnite shuts down" Margin="8,8,0,0"/>
         <CheckBox IsChecked="{Binding Settings.NumberedGameLists}" Content="Numbered game lists (not working yet)" Margin="8,8,0,0"/>
         <TextBlock Text="On startup, copy Listicles data file from this location:" Margin="8,8,0,0" />
         <Grid>
@@ -20,8 +21,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="64" />
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding Settings.CopyToFolder}" Margin="8,0,0,0" Grid.Column="0"/>
-            <Button Content=". . ." Grid.Column="1" Margin="8,8,8,0" />
+            <TextBox x:Name="txtCopyFrom" Text="{Binding Settings.CopyFromFolder}" Margin="8,0,0,0" Grid.Column="0" Height="{Binding ElementName=btnCopyFrom, Path=ActualHeight}" VerticalAlignment="Bottom"/>
+            <Button x:Name="btnCopyFrom" Content=". . ." Grid.Column="1" Margin="8,8,8,0" Click="btnCopyFrom_Click" />
         </Grid>
         <TextBlock Text="On exit, copy Listicles data file to this location:" Margin="8,8,0,0" />
         <Grid>
@@ -32,8 +33,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="64" />
             </Grid.ColumnDefinitions>
-            <TextBox Text="{Binding Settings.CopyToFolder}" Margin="8,0,0,0" Grid.Column="0"/>
-            <Button Content=". . ." Grid.Column="1" Margin="8,8,8,0" />
+            <TextBox x:Name="txtCopyTo" Text="{Binding Settings.CopyToFolder}" Margin="8,0,0,0" Grid.Column="0" Height="{Binding ElementName=btnCopyTo, Path=ActualHeight}" VerticalAlignment="Bottom"/>
+            <Button x:Name="btnCopyTo" Content=". . ." Grid.Column="1" Margin="8,8,8,0" Click="btnCopyTo_Click" />
         </Grid>
     </StackPanel>
 </UserControl>

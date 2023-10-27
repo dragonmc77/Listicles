@@ -69,23 +69,7 @@
         <game id="40f8dcfa-3aad-4537-bfae-161741b66002" index="10" />
       </games>
     </listicle>
-    <listicle id="36668af9-6541-4d23-942c-480d75923989" index="4">
-      <title>10 MORE Weird and Obscure JRPGs - Hallowed Be Thy Game</title>
-      <link>https://www.youtube.com/watch?v=YdPX-ShVWkA</link>
-      <games>
-        <game id="5339bcea-b3b4-4bdb-a889-31d3fa388544" index="0" />
-		<game id="b3383bfc-65f0-4cf2-b832-7f907259da3b" index="1" />
-		<game id="35f456ec-4fe0-46d8-ae42-e96d1b903e4e" index="2" />
-		<game id="00000000-0000-0000-0000-000000000000" index="3">Metal Max Xeno</game>
-        <game id="bdaf556c-a624-4449-befd-7e52af191942" index="4" />
-		<game id="00000000-0000-0000-0000-000000000000" index="5">Dragon Star Varnir</game>
-        <game id="43e15dc4-ebd0-4235-a922-89b249d57a65" index="6" />
-        <game id="7e2f154a-35e6-4efc-abbc-82a304eb7ec5" index="7" />
-        <game id="ae0c0ab3-e16a-43de-8420-757d0c67c203" index="8" />
-		<game id="00000000-0000-0000-0000-000000000000" index="9">7th Dragon III Code VFD</game>
-      </games>
-    </listicle>
-    <listicle id="0dce790b-8fd6-44cf-b21b-6565525eb005" index="5">
+    <listicle id="0dce790b-8fd6-44cf-b21b-6565525eb005" index="4">
       <title>Five Games You Shouldn't 100% - Mortismal Gaming</title>
       <link>https://www.youtube.com/watch?v=L66Uj59dV9w</link>
       <games>
@@ -94,6 +78,81 @@
         <game id="08b06ba5-dfde-4a04-8b73-3068f7599ff4" index="2" />
         <game id="a7329a01-4b41-4362-ac67-47743cfcac3e" index="3" />
         <game id="564fdc03-d05d-458a-ba07-ab0dc121eced" index="4" />
+      </games>
+    </listicle>
+    <listicle id="36668af9-6541-4d23-942c-480d75923989" index="5">
+      <title>10 MORE Weird and Obscure JRPGs - Hallowed Be Thy Game</title>
+      <link>https://www.youtube.com/watch?v=YdPX-ShVWkA</link>
+      <games>
+        <game id="5339bcea-b3b4-4bdb-a889-31d3fa388544" index="0" />
+        <game id="b3383bfc-65f0-4cf2-b832-7f907259da3b" index="1" />
+        <game id="35f456ec-4fe0-46d8-ae42-e96d1b903e4e" index="2" />
+        <game id="00000000-0000-0000-0000-000000000000" index="3">Metal Max Xeno</game>
+        <game id="bdaf556c-a624-4449-befd-7e52af191942" index="4" />
+        <game id="8ee8cf42-1845-4b69-8683-608f7b17568e" index="5" />
+        <game id="43e15dc4-ebd0-4235-a922-89b249d57a65" index="6" />
+        <game id="7e2f154a-35e6-4efc-abbc-82a304eb7ec5" index="7" />
+        <game id="ae0c0ab3-e16a-43de-8420-757d0c67c203" index="8" />
+        <game id="00000000-0000-0000-0000-000000000000" index="9">7th Dragon III Code VFD</game>
+      </games>
+    </listicle>
+    <listicle id="c7cf30ec-500b-42b4-971a-04f4d103c1c2" index="6">
+      <title>15 Masterpiece JRPGs Feat. Your Favourite RPG Creators - The Kiseki Nut</title>
+      <link>https://www.youtube.com/watch?v=3-VYp8wSACc</link>
+      <games>
+        <game id="9c9a0c62-dc72-4835-b146-2a9ec1e26914" index="0" />
+        <game id="d32c244c-de9b-4576-a581-fb8ca032dd2a" index="1" />
+        <game id="76766ccc-a52c-4386-a263-5fd4229fbcfb" index="2" />
+        <game id="584cfbbf-d8b1-4eab-b885-f8724988ccb8" index="3" />
+        <game id="29a923b4-ff0d-470b-b2eb-a39eb02ace1f" index="4" />
+        <game id="0f945520-0f13-4d78-9359-272850684909" index="5" />
+        <game id="00000000-0000-0000-0000-000000000000" index="6">Radiant Historia</game>
+        <game id="9e90792b-6006-4d07-8832-1c9242aa0d7e" index="7" />
+        <game id="59fd573e-f9ff-47ee-87ef-afd347525a60" index="8" />
+        <game id="40f8dcfa-3aad-4537-bfae-161741b66002" index="9" />
+        <game id="684bab3f-386e-45b9-8662-19e614e5a23b" index="10" />
+        <game id="7d9545d4-2ea6-4bce-80bb-52b5d3a20b91" index="11" />
+        <game id="00000000-0000-0000-0000-000000000000" index="12">Fire Emblem Echoes: Shadows of Valentia</game>
+        <game id="30409f92-70e2-47e5-909f-148de33c0af9" index="13" />
+        <game id="8b511edb-df89-4812-952c-516a82614ebf" index="14" />
+      </games>
+    </listicle>
+    <listicle id="26c4f021-e3f7-4f6f-b5af-2db7a102ea4f" index="7">
+      <title>Top 10 Gameboy Advance Games - The Completionist</title>
+      <link>https://www.youtube.com/watch?v=UzwxluGxhwo</link>
+      <games>
+        <game id="e0f9dde3-d8e0-4f99-91ee-6ab0da10b1f8" index="0" />
+        <game id="56f7c1bb-6f4d-4bd6-856d-90e0bac9d7ea" index="1" />
+        <game id="58ac3ad8-5e14-469d-bcf9-23eea9a0c5ca" index="2" />
+        <game id="f479e41d-d8e2-46d0-8632-21072015b549" index="3" />
+        <game id="7da5fa07-e266-4962-beb4-125b81243490" index="4" />
+        <game id="2d332fc8-f433-4744-bb93-efcfab5a0eed" index="5" />
+        <game id="bbe68586-24cd-4531-bf8c-a274e9897fb9" index="6" />
+        <game id="0ffeac64-4deb-4d1f-8046-d21ad5050ae8" index="7" />
+        <game id="d74bdd74-610e-48fb-af8d-2313b5241b48" index="8" />
+        <game id="02bce111-4a7d-4bf9-b306-2285ddffdd18" index="9" />
+      </games>
+    </listicle>
+    <listicle id="8c0b1a36-b2aa-4e33-be14-06e48390bc54" index="8">
+      <title>Top 15 Best Modern Action JRPG That You Should Play | 2023 Edition - Joel RPG</title>
+      <link>https://www.youtube.com/watch?v=5AOLVzt9YXM</link>
+      <games>
+        <game id="33db1a14-cd8d-4366-be70-63e1a0d4f84b" index="0" />
+        <game id="00000000-0000-0000-0000-000000000000" index="1">test</game>
+        <game id="425bfc1b-62b7-429d-9744-8d3a556020ae" index="2" />
+        <game id="24b74885-38dc-4b15-8072-debd868138d9" index="3" />
+        <game id="76766ccc-a52c-4386-a263-5fd4229fbcfb" index="4" />
+        <game id="4022ae1c-640c-47e8-928b-a1ed19cabd94" index="5" />
+        <game id="583c7520-5d11-4e2e-9190-b77c06b3ed7c" index="6" />
+        <game id="7d77f129-d542-424f-b48d-3e897daf8bf5" index="7" />
+        <game id="120e3381-c002-40df-9cb2-4d3bf9385d1c" index="8" />
+        <game id="15f6e12b-e6fe-4bc8-9b5c-ee0ce4f3106d" index="9" />
+        <game id="82c4eddc-be77-4a02-b50a-9999779f7d7c" index="10" />
+        <game id="4405a394-7c47-474b-b4a1-9788beb3574d" index="11" />
+        <game id="9019fa58-433f-4c00-8959-8ff1d53e541f" index="12" />
+        <game id="f9531b93-f6f6-424d-a978-1acc00672bc7" index="13" />
+        <game id="6f7aed2d-5c50-4367-8f11-cc29ca67d673" index="14" />
+        <game id="1ed52712-8f48-4e08-9686-1698e7c78d15" index="15" />
       </games>
     </listicle>
   </listicles>

@@ -344,6 +344,24 @@ namespace Listicles
         }
         public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
         {
+            if (Settings.CopyFromFolder != String.Empty)
+            {
+                try
+                {
+                    string copyFrom = System.IO.Path.Combine(Settings.CopyFromFolder, listiclesPath);
+                    string copyTo = System.IO.Path.Combine(GetPluginUserDataPath(), listiclesPath);
+                    if (File.GetLastWriteTime(copyFrom) > File.GetLastWriteTime(copyTo))
+                    {
+                        File.Copy(copyTo, System.IO.Path.Combine(GetPluginUserDataPath(), $"{listiclesPath}.bak"), true);
+                        File.Copy(copyFrom, copyTo, true);
+                    }
+                }
+                catch ( Exception ex )
+                {
+                    logger.Error(ex, "Error copying Listicles data file in OnApplicationStarted");
+                    PlayniteApi.Notifications.Add($"{Id}-CopyFile", $"Listicles plugin could not copy file: {ex.Message}", NotificationType.Error);
+                }
+            }
             // Add code to be executed when Playnite is initialized.
             try
             {
@@ -369,13 +387,36 @@ namespace Listicles
             }
             catch (Exception e)
             {
-                logger.Error(e, "Error loading PlaylistGames in OnApplicationStarted");
-                PlayniteApi.Notifications.Add($"{Id}-OnApplicationStarted", $"Playlist extension could not load file: {e.Message}", NotificationType.Error);
+                logger.Error(e, "Error loading Listicles data file in OnApplicationStarted");
+                PlayniteApi.Notifications.Add($"{Id}-OnApplicationStarted", $"Listicles plugin could not load file: {e.Message}", NotificationType.Error);
             }
         }
         public override void OnApplicationStopped(OnApplicationStoppedEventArgs args)
         {
             // Add code to be executed when Playnite is shutting down.
+            if (Settings.SaveOnExit)
+            {
+                UpdateListiclesData();
+            }
+            
+            if (Settings.CopyToFolder != String.Empty)
+            {
+                try
+                {
+                    string copyFrom = System.IO.Path.Combine(GetPluginUserDataPath(), listiclesPath);
+                    string copyTo = System.IO.Path.Combine(Settings.CopyToFolder, listiclesPath);
+                    if (File.GetLastWriteTime(copyFrom) > File.GetLastWriteTime(copyTo))
+                    {
+                        //File.Copy(copyTo, System.IO.Path.Combine(GetPluginUserDataPath(), $"{listiclesPath}.bak"), true);
+                        File.Copy(copyFrom, copyTo, true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, "Error copying Listicles data file in OnApplicationStopped");
+                    PlayniteApi.Notifications.Add($"{Id}-CopyFile", $"Listicles plugin could not copy file: {ex.Message}", NotificationType.Error);
+                }
+            }
         }
         public override void OnLibraryUpdated(OnLibraryUpdatedEventArgs args)
         {

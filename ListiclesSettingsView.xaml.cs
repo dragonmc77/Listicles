@@ -21,5 +21,30 @@ namespace Listicles
         {
             InitializeComponent();
         }
+
+        private void btnCopyFrom_Click(object sender, RoutedEventArgs e)
+        {
+            string newFolder = Playnite.SDK.API.Instance.Dialogs.SelectFolder();
+            if (newFolder != String.Empty) { 
+                txtCopyFrom.Text = newFolder;
+                /*  i have to set focus to the text box manually because just changing the
+                    .Text property does not trigger an update via the binding */
+                txtCopyFrom.Focus();
+            }
+            
+            
+        }
+
+        private void btnCopyTo_Click(object sender, RoutedEventArgs e)
+        {
+            string newFolder = Playnite.SDK.API.Instance.Dialogs.SelectFolder();
+            if (newFolder != String.Empty)
+            {
+                txtCopyTo.Text = newFolder;
+                /*  i have to set focus to the text box manually because just changing the
+                    .Text property does not trigger an update via the binding */
+                txtCopyTo.Focus();
+            }
+        }
     }
 }
