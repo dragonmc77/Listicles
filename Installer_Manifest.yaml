@@ -1,5 +1,15 @@
 AddonId: "Listicles_f353f85c-2d42-4cd2-8ed6-0583c221d16c"
 Packages:
+  - Version: 1.0.1
+    RequiredApiVersion: 6.9.0
+    ReleaseDate: 2023-10-27
+    PackageUrl: https://github.com/dragonmc77/Listicles/releases/download/v1.0.1/Listicles_1_0_1.pext
+    Changelog:
+      - Added togglable option to automatically save Listicles data when Playnite shuts down.
+      - Added togglable option to prompt for confirmation when deleting a Listicle.
+      - Added togglable option to show a confirmation when manually saving (via the Save button).
+      - Added option to export the Listicles data file to an external folder when Playnite shuts down (useful for cloud integration)
+      - Added option to import the Listicles data file from an external folder when Playnite starts up (useful for cloud integration)
   - Version: 1.0
     RequiredApiVersion: 6.9.0
     ReleaseDate: 2023-10-20
