@@ -6,7 +6,7 @@ It is best used in a large library when you want to have "Top 10" lists for exam
  
 Install as any plugin:
 
-Download the .pext file from the repository root and run it to install the plugin.
+Download the latest .pext file from the Releases page and run it to install the plugin.
 
 Features:
 
