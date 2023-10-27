@@ -146,7 +146,7 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Expander.Style>-->
-                                        <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged">
+                                        <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged" AllowDrop="True" PreviewMouseLeftButtonDown ="lvGames_PreviewMouseLeftButtonDown" MouseMove="lvGames_MouseMove" DragEnter="lvGames_DragEnter" Drop="lvGames_Drop">
                                             <ListView.View>
                                                 <GridView ColumnHeaderContainerStyle="{StaticResource noHeader}">
                                                     <GridViewColumn>
