@@ -23,6 +23,8 @@ namespace Listicles
     /// </summary>
     public partial class ListiclesView : UserControl
     {
+        private Point startPoint = new Point();
+        private int startIndex = -1;
         private ListiclesViewModel ViewModel;
         private int selectedGameIndex;
         public ListiclesView()
@@ -38,6 +40,83 @@ namespace Listicles
             if (viewModel.Listicles.Count == 0)
             {
                 gvcMain.Header = "You have no Listicles! Right-click a game in your Library and select 'Add to Listicle'";
+            }
+        }
+        private void lvGames_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Get current mouse position
+            startPoint = e.GetPosition(null);
+        }
+        private static T FindAncestor<T>(DependencyObject current)
+            where T : DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
+        }
+        private void lvGames_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance || Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Get the dragged Item
+                ListView listView = sender as ListView;
+                ListViewItem listViewItem = FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
+                if (listViewItem == null) return;           // Abort
+                                                            // Find the data behind the ListViewItem
+                Game item = (Game)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
+                if (item == null) return;                   // Abort
+                                                            // Initialize the drag & drop operation
+                startIndex = listView.SelectedIndex;
+                DataObject dragData = new DataObject("Game", item);
+                DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Copy | DragDropEffects.Move);
+            }
+        }
+        private void lvGames_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("Game") || sender != e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+
+        }
+        private void lvGames_Drop(object sender, DragEventArgs e)
+        {
+            int index = -1;
+
+            if (e.Data.GetDataPresent("Game") && sender == e.Source)
+            {
+                // Get the drop ListViewItem destination
+                ListView listView = sender as ListView;
+                ListViewItem listViewItem = FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
+                if (listViewItem == null)
+                {
+                    // Abort
+                    e.Effects = DragDropEffects.None;
+                    return;
+                }
+                // Find the data behind the ListViewItem
+                Game item = (Game)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
+                // Move item into observable collection 
+                // (this will be automatically reflected)
+                e.Effects = DragDropEffects.Move;
+                index = ViewModel.CurrentListicle.Games.IndexOf(item);
+                if (startIndex >= 0 && index >= 0)
+                {
+                    ViewModel.CurrentListicle.Games.Move(startIndex, index);
+                }
+                startIndex = -1;        // Done!
             }
         }
         private void lvGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
