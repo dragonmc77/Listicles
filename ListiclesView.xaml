@@ -147,6 +147,36 @@
                                             </Style>
                                         </Expander.Style>-->
                                         <ListView x:Name="lvGames" ItemsSource="{Binding Games}" SelectedIndex="{Binding SelectedGameIndex}" SelectionChanged="lvGames_SelectionChanged" AllowDrop="True" PreviewMouseLeftButtonDown ="lvGames_PreviewMouseLeftButtonDown" MouseMove="lvGames_MouseMove" DragEnter="lvGames_DragEnter" Drop="lvGames_Drop">
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListViewItem}">
+                                                    <Setter Property="Background" Value="{DynamicResource NormalBrushDark}" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
+                                                                    <GridViewRowPresenter HorizontalAlignment="Stretch" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <EventSetter Event="MouseDoubleClick" Handler="HandleGameDoubleClick" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource NormalBrush}" />
+                                                        </Trigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsSelected" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <MultiTrigger.Setters>
+                                                                <Setter Property="Background" Value="{DynamicResource GlyphBrush}" />
+                                                                <Setter Property="Foreground" Value="White"/>
+                                                            </MultiTrigger.Setters>
+                                                        </MultiTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
                                             <ListView.View>
                                                 <GridView ColumnHeaderContainerStyle="{StaticResource noHeader}">
                                                     <GridViewColumn>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -41,6 +42,28 @@ namespace Listicles
             {
                 gvcMain.Header = "You have no Listicles! Right-click a game in your Library and select 'Add to Listicle'";
             }
+        }
+        protected void HandleGameDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ViewModel.CurrentListicle != null)
+            {
+                if (ViewModel.CurrentListicle.Games.Count > 0)
+                {
+                    int index = ViewModel.CurrentListicle.SelectedGameIndex;
+                    if (index >= 0)
+                    {
+                        if (ViewModel.Plugin.Settings.DoubleClickPlay)
+                        {
+                            ViewModel.Plugin.PlayniteApi.StartGame(ViewModel.CurrentListicle.Games[index].Id);
+                        }
+                        else if (ViewModel.Plugin.Settings.DoubleClickShow)
+                        {
+                            ViewModel.ShowGameInLibrary.Execute(ViewModel.CurrentListicle.Games[index]);
+                        }
+                    }
+                }
+            }
+
         }
         private void lvGames_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

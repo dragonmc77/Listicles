@@ -12,6 +12,13 @@
         <CheckBox IsChecked="{Binding Settings.ShowSaveConfirmation}" Content="Show confirmation after manually saving" Margin="8,8,0,0"/>
         <CheckBox IsChecked="{Binding Settings.SaveOnExit}" Content="Automatically save when Playnite shuts down" Margin="8,8,0,0"/>
         <CheckBox IsChecked="{Binding Settings.NumberedGameLists}" Content="Numbered game lists (not working yet)" Margin="8,8,0,0"/>
+        
+        <StackPanel Margin="8,8,8,0">
+            <TextBlock Text="DoubleClick Setting:" Margin="8,8,0,0"/>
+            <RadioButton IsChecked="{Binding Settings.DoubleClickShow}" GroupName="Doubleclick Setting" Content="Show Game in Library" Margin="8,8,8,4"/>
+            <RadioButton IsChecked="{Binding Settings.DoubleClickPlay}" GroupName="Doubleclick Setting" Content="Play/Install Game" Margin="8,4,8,8"/>
+        </StackPanel>
+        
         <TextBlock Text="On startup, copy Listicles data file from this location:" Margin="8,8,0,0" />
         <Grid>
             <Grid.RowDefinitions>
