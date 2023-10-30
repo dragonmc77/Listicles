@@ -136,7 +136,15 @@
                         <GridViewColumn Header="Listicles" x:Name="gvcMain" Width="{Binding ElementName=gridViewHelper, Path=ActualWidth}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Expander Header="{Binding Title}" Width="{Binding ElementName=expanderHelper, Path=ActualWidth}" FontFamily="{Binding SelectedListicleHighlight}"  Expanded="Expander_Expanded">
+                                    <Expander Width="{Binding ElementName=expanderHelper, Path=ActualWidth}" FontFamily="{Binding SelectedListicleHighlight}"  Expanded="Expander_Expanded">
+                                        <Expander.Header>
+                                            <WrapPanel>
+                                                <TextBlock Text="{Binding Title}" FontFamily="{Binding SelectedListicleHighlight}"/>
+                                                <TextBlock Text="  ("/>
+                                                <TextBlock Text="{Binding GameCount}"/>
+                                                <TextBlock Text=" games)  "/>
+                                            </WrapPanel>
+                                        </Expander.Header>
                                         <!--<Expander.Style>
                                             <Style TargetType="Expander">
                                                 <Style.Triggers>

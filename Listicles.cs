@@ -62,6 +62,8 @@ namespace Listicles
         public class ListiclesItem : INotifyPropertyChanged
         {
             private FontFamily selectedListicleHighlight = new FontFamily("Segoe UI Light");
+            private int gameCount;
+            private int stubCount;
             private int selectedGameIndex;
             private string title;
             [XmlAttribute("id")]
@@ -114,16 +116,39 @@ namespace Listicles
                 }
             }
             [XmlIgnore]
+            public int GameCount
+            {
+                get { return gameCount; }
+                set { gameCount = value; OnPropertyChanged("GameCount"); }
+            }
+            [XmlIgnore]
+            public int StubCount
+            {
+                get { return stubCount; }
+                set { stubCount = value; OnPropertyChanged("StubCount"); }
+            }
+            [XmlIgnore]
             public ObservableCollection<Game> Games { get; set; }
 
-            public ListiclesItem()
+            public ListiclesItem() : this(Guid.NewGuid().ToString())
             {
-                Id = Guid.NewGuid();
+                //Id = Guid.NewGuid();
             }
 
             public ListiclesItem(string id)
             {
-                Id = Guid.Parse("id");
+                Id = Guid.Parse(id);
+                string stubId = "00000000-0000-0000-0000-000000000000";
+                Games = new ObservableCollection<Game>();
+                Games.CollectionChanged += (sender, changedArgs) =>
+                {
+                    if (changedArgs.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove | 
+                        changedArgs.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add )
+                    {
+                        this.GameCount = Games.Count;
+                        this.StubCount = Games.Where(x => x.Notes == $"Stub{{{stubId}}}").ToList().Count;
+                    }
+                };
             }
 
             public event PropertyChangedEventHandler PropertyChanged = delegate { };
@@ -171,7 +196,7 @@ namespace Listicles
                         Index = int.Parse(xmlListicle.GetAttribute("index")),
                         Title = xmlListicle.GetElementsByTagName("title").Item(0).InnerText,
                         Link = xmlListicle.GetElementsByTagName("link").Item(0).InnerText,
-                        Games = new ObservableCollection<Game>()
+                        //Games = new ObservableCollection<Game>()
                     };
 
                     /* in order to support preserving the order that the user specifies for games in
@@ -366,7 +391,7 @@ namespace Listicles
             try
             {
                 // Initialization is done inside OnApplicationStarted, otherwise
-                // loadPlaylistFile runs too early in Playnite's startup and
+                // LoadListiclesData runs too early in Playnite's startup and
                 // cannot call PlayniteApi.Database.Games.Get()
 
                 ListiclesViewModel.Listicles = new ObservableCollection<ListiclesItem>(LoadListiclesData().OrderBy(x => x.Index));
