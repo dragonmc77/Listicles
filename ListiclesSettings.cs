@@ -15,6 +15,8 @@ namespace Listicles
         private bool confirmListicleDelete = false;
         private bool showSaveConfirmation = false;
         private bool saveOnExit = false;
+        private bool doubleClickPlay = false;
+        private bool doubleClickShow = true;
         private string copyFromFolder = string.Empty;
         private string copyToFolder = string.Empty;
         private bool optionThatWontBeSaved = false;
@@ -24,6 +26,8 @@ namespace Listicles
         public bool ConfirmListicleDelete { get => confirmListicleDelete; set => SetValue(ref confirmListicleDelete, value); }
         public bool ShowSaveConfirmation { get => showSaveConfirmation; set => SetValue(ref showSaveConfirmation, value); }
         public bool SaveOnExit { get => saveOnExit; set => SetValue(ref saveOnExit, value); }
+        public bool DoubleClickPlay { get => doubleClickPlay; set => SetValue(ref doubleClickPlay, value); }
+        public bool DoubleClickShow { get => doubleClickShow; set => SetValue(ref doubleClickShow, value); }
         public string CopyFromFolder { get => copyFromFolder; set => SetValue(ref copyFromFolder, value); }
         public string CopyToFolder { get => copyToFolder; set => SetValue(ref copyToFolder, value); }
         // Playnite serializes settings object to a JSON object and saves it as text file.
