@@ -1,12 +1,12 @@
 AddonId: "Listicles_f353f85c-2d42-4cd2-8ed6-0583c221d16c"
 Packages:
-- Version: 1.0.2
-    RequiredApiVersion: 6.9.0
-    ReleaseDate: 2023-10-30
-    PackageUrl: https://github.com/dragonmc77/Listicles/releases/download/v1.0.2/Listicles_1_0_2.pext
-    Changelog:
-      - Added configurable option to Play or Show a game when double-clicked (thanks to azuravian for the code)
-      - Added drag/drop support to re-order games in a Listicle (thanks to azuravian for the code)
+ - Version: 1.0.2
+   RequiredApiVersion: 6.9.0
+   ReleaseDate: 2023-10-30
+   PackageUrl: https://github.com/dragonmc77/Listicles/releases/download/v1.0.2/Listicles_1_0_2.pext
+   Changelog:
+     - Added configurable option to Play or Show a game when double-clicked (thanks to azuravian for the code)
+     - Added drag/drop support to re-order games in a Listicle (thanks to azuravian for the code)
   - Version: 1.0.1
     RequiredApiVersion: 6.9.0
     ReleaseDate: 2023-10-27
