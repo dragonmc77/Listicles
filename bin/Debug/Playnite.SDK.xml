@@ -6833,6 +6833,21 @@
             
              </summary>
         </member>
+        <member name="T:Playnite.SDK.FullscreenView">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Playnite.SDK.FullscreenView.List">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Playnite.SDK.FullscreenView.Details">
+             <summary>
+            
+             </summary>
+        </member>
         <member name="T:Playnite.SDK.IMainViewAPI">
             <summary>
             Describes object providing API for main UI view.
@@ -6841,6 +6856,11 @@
         <member name="P:Playnite.SDK.IMainViewAPI.ActiveDesktopView">
             <summary>
             Gets currently active Desktop mode view.
+            </summary>
+        </member>
+        <member name="P:Playnite.SDK.IMainViewAPI.ActiveFullscreenView">
+            <summary>
+            Gets currently active Fullscreen mode view.
             </summary>
         </member>
         <member name="P:Playnite.SDK.IMainViewAPI.SortOrder">

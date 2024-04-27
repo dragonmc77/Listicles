@@ -256,9 +256,6 @@ namespace Listicles
         /// </remarks>
         public bool UpdateListiclesData()
         {
-            string path = System.IO.Path.Combine(GetPluginUserDataPath(), listiclesPath);
-            XmlSerializer serializer = new XmlSerializer(typeof(XmlListicles));
-            TextWriter writer = new StreamWriter($"{path}");
             XmlListicles xmlListicles = new XmlListicles();
             xmlListicles.XmlListiclesItem = new XmlListiclesItem[ListiclesViewModel.Listicles.Count];
 
@@ -286,6 +283,9 @@ namespace Listicles
 
                 xmlListicles.XmlListiclesItem[listicle.Index] = item;
             }
+            string path = System.IO.Path.Combine(GetPluginUserDataPath(), listiclesPath);
+            XmlSerializer serializer = new XmlSerializer(typeof(XmlListicles));
+            TextWriter writer = new StreamWriter($"{path}");
             serializer.Serialize(writer, xmlListicles);
             writer.Close();
             return true;

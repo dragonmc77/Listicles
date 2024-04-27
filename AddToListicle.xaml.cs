@@ -48,11 +48,12 @@ namespace Listicles
         {
             if (rdoNew.IsChecked == true)
             {
-                Listicles.ListiclesItem newItem = new Listicles.ListiclesItem();
-                newItem.Index = ViewModel.Listicles.Count;
-                newItem.Title = txtNewListicleTitle.Text;
-                newItem.Link = txtNewListicleLink.Text;
-                newItem.Games = new ObservableCollection<Game>();
+                Listicles.ListiclesItem newItem = new Listicles.ListiclesItem
+                {
+                    Index = ViewModel.Listicles.Count,
+                    Title = txtNewListicleTitle.Text,
+                    Link = txtNewListicleLink.Text
+                };
                 gameList.ForEach(x => newItem.Games.Add(x));
                 ViewModel.Listicles.Add(newItem);
             }
