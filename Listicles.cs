@@ -315,10 +315,6 @@ namespace Listicles
                     {
                         PlayniteApi.Notifications.Add($"{Id}-AddToListicle", $"Listicle selected: {ListiclesViewModel.CurrentListicle.Title}", NotificationType.Info);
                     }
-                    else
-                    {
-                        PlayniteApi.Notifications.Add($"{Id}-AddToListicle", "Listicle selection cancelled", NotificationType.Info);
-                    }
                     
                     foreach (Game game in args.Games)
                     {
