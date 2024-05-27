@@ -334,7 +334,12 @@ namespace Listicles
             {
                 Title = "Listicles",
                 Type = SiderbarItemType.View,
-                Icon = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "listicles.png"),
+                Icon = new TextBlock
+                {
+                    Text = char.ConvertFromUtf32(0xef74),
+                    FontSize = 20,
+                    FontFamily = ResourceProvider.GetResource("FontIcoFont") as FontFamily
+                },
                 Opened = () => {
                     if (ListiclesViewModel == null)
                     {
