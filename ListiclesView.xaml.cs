@@ -201,7 +201,7 @@ namespace Listicles
                     }
                     catch (Exception ex) 
                     {
-                        Playnite.SDK.API.Instance.Dialogs.ShowErrorMessage("Error opening link. Make sure it is properly formatted.", "Listicles");
+                        Playnite.SDK.API.Instance.Dialogs.ShowErrorMessage("Error opening link. Make sure it is properly formatted.");
                     }
                 }
             }
