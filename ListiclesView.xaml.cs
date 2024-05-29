@@ -212,8 +212,9 @@ namespace Listicles
             {
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
                 if (index > 0)
-                { 
-                    ViewModel.CurrentListicle.Games.Move(index, index - 1); 
+                {
+                    int newIndex = index - 1;
+                    MoveGameWithinListicle(index, newIndex);
                 }
             }
         }
@@ -224,7 +225,8 @@ namespace Listicles
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
                 if (index < ViewModel.CurrentListicle.Games.Count - 1 & index >= 0)
                 {
-                    ViewModel.CurrentListicle.Games.Move(index, index + 1);
+                    int newIndex = index + 1;
+                    MoveGameWithinListicle(index, newIndex);
                 }
             }
         }
@@ -235,18 +237,21 @@ namespace Listicles
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
                 if (index > 0)
                 {
-                    ViewModel.CurrentListicle.Games.Move(index, 0);
+                    MoveGameWithinListicle(index, 0);
                 }
             }
         }
+
+
         private void btnMoveBottom_Click(object sender, RoutedEventArgs e)
         {
             if (ViewModel.CurrentListicle != null)
             {
                 int index = ViewModel.CurrentListicle.SelectedGameIndex;
-                if (index < ViewModel.CurrentListicle.Games.Count - 1 & index >= 0)
+                int lastGameIndex = ViewModel.CurrentListicle.Games.Count - 1;
+                if (index < lastGameIndex & index >= 0)
                 {
-                    ViewModel.CurrentListicle.Games.Move(index, ViewModel.CurrentListicle.Games.Count - 1);
+                    MoveGameWithinListicle(index, lastGameIndex);
                 }
             }
         }
@@ -374,6 +379,12 @@ namespace Listicles
                 var parent = ((Control)sender).Parent as UIElement;
                 parent.RaiseEvent(eventArg);
             }
+        }
+
+        private void MoveGameWithinListicle(int oldIndex, int newIndex)
+        {
+            ViewModel.CurrentListicle.Games.Move(oldIndex, newIndex);
+            ViewModel.CurrentListicle.SelectedGameIndex = newIndex;
         }
     }
 }
